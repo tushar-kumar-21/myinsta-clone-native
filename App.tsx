@@ -3,6 +3,7 @@ import tw from 'twrnc';
 import Home from './app/HomePage/Home';
 import Search from './app/Search';
 import Header from './components/Header';
+import UserProfile from './app/UserProfile';
 import Colors from './constants/Colors';
 import Footer from './components/Footer';
 import { NavigationContainer } from '@react-navigation/native';
@@ -11,6 +12,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 export type RootStackParamList = {
   Home?: undefined;
   Search?: undefined;
+  UserProfile?:undefined;
 }
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -36,6 +38,14 @@ export default function App() {
               <Stack.Screen
                 name="Search"
                 component={Search}
+                options={{
+                  headerShown: false,
+                  contentStyle: styles.container,
+                }}
+              />
+              <Stack.Screen
+                name="UserProfile"
+                component={UserProfile}
                 options={{
                   headerShown: false,
                   contentStyle: styles.container,

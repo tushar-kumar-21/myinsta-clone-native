@@ -23,10 +23,13 @@ const Footer = () => {
 
             <Ionicons name="duplicate-outline" size={28} color={Colors.primary} />
             <Ionicons name="play-circle-outline" size={28} color={Colors.primary} />
-            <Image
-                source={{ uri: 'https://picsum.photos/seed/696/3000/2000' }}
-                style={tw`w-7 h-7 rounded-full`}
-            />
+            <TouchableOpacity onPress={()=>navigation.navigate('UserProfile')}>
+                <Image
+                    source={{ uri: 'https://picsum.photos/seed/696/3000/2000' }}
+                    style={tw`w-7 h-7 rounded-full`}
+
+                />
+            </TouchableOpacity>
         </View>
     )
 }
