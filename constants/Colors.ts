@@ -19,6 +19,7 @@ const Colors = {
     primary: '#fff',
     secondary:'#000',
     lightGrey: '#fcf8ff',
+    dimgrey:'#222222',
     grey: '#ee9f0',
     medium: '#9f9aa1',
     mediumDark: '#424242',

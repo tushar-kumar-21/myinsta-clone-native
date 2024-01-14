@@ -30,6 +30,7 @@ export default function App() {
                 component={Home}
                 options={{
                   headerShown: false,
+                  contentStyle: styles.container,
                 }}
               />
               <Stack.Screen
@@ -37,6 +38,7 @@ export default function App() {
                 component={Search}
                 options={{
                   headerShown: false,
+                  contentStyle: styles.container,
                 }}
               />
             </Stack.Navigator>
