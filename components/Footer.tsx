@@ -12,7 +12,7 @@ const Footer = () => {
     const navigation = useNavigation<FooterProps['navigation']>();
 
     return (
-        <View style={[{ backgroundColor: '#000' }, tw`flex flex-row w-full justify-between pb-5 pt-2 px-4 border border-t-gray-800 absolute bottom-0`]}>
+        <View style={[{ backgroundColor: '#000' }, tw`flex flex-row w-full justify-between pb-5 pt-2 px-4 border border-t-gray-800 absolute bottom-3`]}>
             <TouchableOpacity onPress={() => navigation.navigate('Home')}>
                 <Ionicons name="home" size={28} color={Colors.primary} />
             </TouchableOpacity>
