@@ -2,9 +2,21 @@ import { FlatList, Image, ScrollView, StyleSheet, Text, View } from 'react-nativ
 import tw from 'twrnc';
 import { AntDesign } from '@expo/vector-icons';
 import Colors from '../../constants/Colors';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { fetchPopularPhotos } from '../../api/photos';
 
-const Highlights = ({ imageData}) => {
+const Highlights = () => {
+
+    const [imageData, setImageData] = useState([]);
+
+    const fetchPhotosData = async (page:number, perPage:number) => {
+        const data = await fetchPopularPhotos(page, perPage)
+        setImageData(data?.photos || [])
+    }
+        
+    useEffect(() => {
+        fetchPhotosData(32, 7)
+    }, [])
 
     const renderItem = ({ item: photos, index }) => (
         <>
@@ -18,7 +30,7 @@ const Highlights = ({ imageData}) => {
                         style={tw`w-15 aspect-square rounded-full`}
                     />
                 </View>
-                <Text style={[{ color: Colors.primary }, tw``]}>Henry</Text>
+                <Text style={[{ color: Colors.primary }, tw``]}>{photos?.photographer.split(" ")[0]}</Text>
             </View>
             {
                 index === imageData?.length - 1 && (

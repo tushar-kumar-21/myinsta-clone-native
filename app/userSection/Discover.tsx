@@ -6,7 +6,7 @@ import Colors from '../../constants/Colors';
 import { useEffect, useState } from 'react';
 import { fetchPopularPhotos } from '../../api/photos';
 
-const Discover = ({imageData}) => {
+const Discover = ({ imageData }) => {
 
     const renderItem = ({ item: photos, index }) => (
         <>
@@ -77,7 +77,7 @@ const Discover = ({imageData}) => {
                 <FlatList
                     data={imageData}
                     horizontal
-                    renderItem={renderItem}
+                    renderItem={renderItem}                                        
                     contentContainerStyle={tw`flex flex-row gap-1 px-3`}
                 />
 

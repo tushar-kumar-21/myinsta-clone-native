@@ -1,26 +1,27 @@
-import { Image, StyleSheet, Text, View } from 'react-native'
+import { ActivityIndicator, FlatList, Image, StyleSheet, Text, View } from 'react-native'
 import Ionicons from '@expo/vector-icons/Ionicons';
 import tw from 'twrnc';
 import Colors from '../constants/Colors';
 
-const Post = () => {
-    return (
-        <View style={tw`mb-4`}>
+const Post = ({ imageData, triggerFetchData }) => {
+
+    const renderItem = ({ item: photos }) => (
+     <View style={tw`mb-4`} key={photos?.photographer_id}>
             <View style={tw`flex flex-row justify-between items-center py-2 px-3`}>
                 <View style={tw`flex flex-row justify-center gap-2 items-center`}>
                     <Image
-                        source={{ uri: 'https://picsum.photos/seed/696/3000/2000' }}
+                        source={{ uri: photos?.src?.large2x }}
                         style={tw`w-8 h-8 rounded-full`}
                     />
                     <View style={tw`flex flex-col`}>
-                        <Text style={[{ color: Colors.primary }, tw`font-semibold`]}>allen.codes</Text>
+                        <Text style={[{ color: Colors.primary }, tw`font-semibold`]}>{photos?.photographer}</Text>
                         <Text style={[{ color: Colors.primary }, tw` text-xs font-normal`]}>New Zealand</Text>
                     </View>
                 </View>
                 <Ionicons name="ellipsis-vertical-outline" size={20} color={Colors.primary} />
             </View>
             <Image
-                source={{ uri: 'https://picsum.photos/seed/696/3000/2000' }}
+                source={{ uri:photos?.src?.large2x }}
                 style={tw`w-full h-125`}
             />
             <View style={tw`px-4`}>
@@ -34,7 +35,7 @@ const Post = () => {
                 </View>
                 <View style={tw`flex flex-row items-center w-full gap-3 py-2`}>
                     <Image
-                        source={{ uri: 'https://picsum.photos/seed/696/3000/2000' }}
+                        source={{ uri: photos?.src?.large2x }}
                         style={tw`h-5 w-5 rounded-full`}
                     />
                     <Text style={[{ color: Colors.primary }]}>
@@ -55,6 +56,22 @@ const Post = () => {
                 <Text style={[{ color: Colors.medium }, tw`text-xs mt-1`]}>5 hours ago</Text>
             </View>
         </View>
+)
+const renderFooter = () => {
+    return (
+        <View style={tw`my-12 items-center`}>
+            <ActivityIndicator size={70} color={Colors.medium} />
+        </View>
+    )
+};
+    return (       
+        <FlatList
+            data={imageData}            
+            renderItem={renderItem}  
+            onEndReached={triggerFetchData}          
+            onEndReachedThreshold={0.1}
+            ListEmptyComponent={renderFooter}
+        />
     )
 }
 
