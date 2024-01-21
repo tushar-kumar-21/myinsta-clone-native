@@ -3,7 +3,7 @@ import tw from 'twrnc';
 import Home from './app/HomePage/Home';
 import Search from './app/Search';
 import Header from './components/Header';
-import UserProfile from './app/UserProfile';
+import UserProfile from './app/userSection/UserProfile';
 import Colors from './constants/Colors';
 import Footer from './components/Footer';
 import { NavigationContainer } from '@react-navigation/native';

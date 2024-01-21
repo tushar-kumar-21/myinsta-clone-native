@@ -23,6 +23,7 @@ const Colors = {
     grey: '#ee9f0',
     medium: '#9f9aa1',
     mediumDark: '#424242',
+    textPrimary:'dodgerblue'
 };
 
 export default Colors;

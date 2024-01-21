@@ -33,8 +33,7 @@ const Search = () => {
     };
 
     useEffect(() => {
-        fetchData();
-        console.log("hghfgjkhkjh")
+        fetchData();        
     }, [page, shouldFetchData]);
 
     // You can use this function to manually trigger data fetching when needed
@@ -54,7 +53,8 @@ const Search = () => {
         return (
             <View style={tw`my-12 items-center`}>
                 <ActivityIndicator size={70} color={Colors.medium} />
-            </View>)
+            </View>
+        )
     };
 
     return (
@@ -72,7 +72,7 @@ const Search = () => {
                 ListFooterComponent={renderFooter}
                 contentContainerStyle={tw` gap-[2px] mt-3 pb-20 `}
                 numColumns={3}
-            />            
+            />
         </View>
     );
 };
