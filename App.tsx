@@ -8,56 +8,68 @@ import Colors from './constants/Colors';
 import Footer from './components/Footer';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
+import Reels from './app/reels/Reels';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 export type RootStackParamList = {
   Home?: undefined;
   Search?: undefined;
-  UserProfile?:undefined;
+  UserProfile?: undefined;
+  Reels?: undefined;
 }
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export default function App() {
   return (
-    <>
-
-      <StatusBar backgroundColor={Colors.secondary} barStyle='light-content' />
-      <SafeAreaView style={styles.androidSafeArea}>
-        {/* <Home /> */}
-        <View style={tw`h-full w-full mt-3`}>
-          <NavigationContainer>
-            <Stack.Navigator>
-              <Stack.Screen
-                name="Home"
-                component={Home}
-                options={{
-                  headerShown: false,
-                  contentStyle: styles.container,
-                }}
-              />
-              <Stack.Screen
-                name="Search"
-                component={Search}
-                options={{
-                  headerShown: false,
-                  contentStyle: styles.container,
-                }}
-              />
-              <Stack.Screen
-                name="UserProfile"
-                component={UserProfile}
-                options={{
-                  headerShown: false,
-                  contentStyle: styles.container,
-                }}
-              />
-            </Stack.Navigator>
-            <Footer />
-          </NavigationContainer>
-        </View>
-      </SafeAreaView>
-
-    </>
+    <GestureHandlerRootView>
+      <BottomSheetModalProvider>
+        <StatusBar backgroundColor={Colors.secondary} barStyle='light-content' />
+        <SafeAreaView style={styles.androidSafeArea}>
+          {/* <Home /> */}
+          <View style={tw`h-full w-full mt-3`}>
+            <NavigationContainer>
+              <Stack.Navigator>
+                <Stack.Screen
+                  name="Home"
+                  component={Home}
+                  options={{
+                    headerShown: false,
+                    contentStyle: styles.container,
+                  }}
+                />
+                <Stack.Screen
+                  name="Search"
+                  component={Search}
+                  options={{
+                    headerShown: false,
+                    contentStyle: styles.container,
+                  }}
+                />
+                <Stack.Screen
+                  name="UserProfile"
+                  component={UserProfile}
+                  options={{
+                    headerShown: false,
+                    contentStyle: styles.container,
+                  }}
+                />
+                <Stack.Screen
+                  name="Reels"
+                  component={Reels}
+                  options={{
+                    headerShown: false,
+                    contentStyle: styles.container,
+                  }}
+                />
+              </Stack.Navigator>
+              <Footer />
+            </NavigationContainer>
+          </View>
+        </SafeAreaView>
+      </BottomSheetModalProvider>
+    </GestureHandlerRootView>
   );
 }
 

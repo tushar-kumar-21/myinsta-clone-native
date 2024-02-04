@@ -11,7 +11,7 @@ const Discover = ({ imageData }) => {
     const renderItem = ({ item: photos, index }) => (
         <>
             <View
-                style={tw`border border-slate-600 w-36 rounded-md relative p-3 px-2 h-51`}
+                style={[{borderWidth:1, borderColor:Colors.mediumDark},tw`w-36 rounded-md relative p-3 px-2 h-51`]}
                 key={photos?.photographer_id}
             >
                 <Entypo

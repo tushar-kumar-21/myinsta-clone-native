@@ -12,7 +12,7 @@ const Footer = () => {
     const navigation = useNavigation<FooterProps['navigation']>();
 
     return (
-        <View style={[{ backgroundColor: '#000' }, tw`flex flex-row w-full justify-between pb-5 pt-2 px-4 border border-t-gray-800 absolute bottom-3`]}>
+        <View style={[{ backgroundColor: '#000' }, tw`flex flex-row w-full justify-between pb-7 pt-2 px-4 border border-t-gray-800 absolute bottom-3`]}>
             <TouchableOpacity onPress={() => navigation.navigate('Home')}>
                 <Ionicons name="home" size={28} color={Colors.primary} />
             </TouchableOpacity>
@@ -22,8 +22,12 @@ const Footer = () => {
             </TouchableOpacity>
 
             <Ionicons name="duplicate-outline" size={28} color={Colors.primary} />
-            <Ionicons name="play-circle-outline" size={28} color={Colors.primary} />
-            <TouchableOpacity onPress={()=>navigation.navigate('UserProfile')}>
+
+            <TouchableOpacity onPress={() => navigation.navigate('Reels')}>
+                <Ionicons name="play-circle-outline" size={28} color={Colors.primary} />
+            </TouchableOpacity>
+
+            <TouchableOpacity onPress={() => navigation.navigate('UserProfile')}>
                 <Image
                     source={{ uri: 'https://picsum.photos/seed/696/3000/2000' }}
                     style={tw`w-7 h-7 rounded-full`}

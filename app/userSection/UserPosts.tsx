@@ -36,7 +36,7 @@ const UserPosts = () => {
     });
 
     return (
-        <View style={tw`mt-6 w-full`}>
+        <View style={tw`mt-6 w-full mb-25`}>
             <View style={tw`flex flex-row justify-between`}>
                 <TouchableOpacity
                     style={tw`w-1/2`}
