@@ -1,10 +1,13 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
+import tw from 'twrnc';
+import BottomSheetSettings from '../userSection/BottomSheetComp';
 
 const Reels = () => {
     return (
-        <View>
-            <Text>Reels</Text>
+        <View style={tw`flex-1`}>
+            <Text style={tw`text-white`}>Reels</Text>
+            <BottomSheetSettings/>
         </View>
     )
 }

@@ -11,7 +11,13 @@ const Discover = ({ imageData }) => {
     const renderItem = ({ item: photos, index }) => (
         <>
             <View
-                style={[{borderWidth:1, borderColor:Colors.mediumDark},tw`w-36 rounded-md relative p-3 px-2 h-51`]}
+                style={[
+                    {
+                        borderWidth: 1,
+                        borderColor: Colors.mediumDark
+                    }
+                    , tw`w-36 rounded-md relative p-3 px-2 h-51`]
+                }
                 key={photos?.photographer_id}
             >
                 <Entypo
@@ -77,7 +83,7 @@ const Discover = ({ imageData }) => {
                 <FlatList
                     data={imageData}
                     horizontal
-                    renderItem={renderItem}                                        
+                    renderItem={renderItem}
                     contentContainerStyle={tw`flex flex-row gap-1 px-3`}
                 />
 
