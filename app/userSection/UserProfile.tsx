@@ -7,7 +7,9 @@ import Discover from './Discover';
 import Highlights from './Highlights';
 import UserPosts from './UserPosts';
 import { fetchPopularPhotos } from '../../api/photos';
-import BottomSheetSettings from './BottomSheetComp';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { RootStackParamList } from '../../App';
 
 const UserProfile = () => {
     const [imageData, setImageData] = useState('');
@@ -26,10 +28,13 @@ const UserProfile = () => {
         setBottomSheetVisible(!bottomSheetVisible);
     };
 
+    type SettingProps = NativeStackScreenProps<RootStackParamList, 'Settings'>
+
+    const navigation = useNavigation<SettingProps['navigation']>();
+
     return (
         <>
             <View style={tw`flex-1`}>
-<BottomSheetSettings/>
                 <FlatList
                     ListHeaderComponent={
                         <>
@@ -41,7 +46,9 @@ const UserProfile = () => {
                                 </View>
                                 <View style={tw`flex flex-row items-center gap-6`}>
                                     <FeatherIcons name="plus-square" size={30} color={Colors.primary} />
-                                    <FeatherIcons name="menu" size={35} color={Colors.primary} />
+                                    <TouchableOpacity onPress={() => navigation.navigate('Settings')}>
+                                        <FeatherIcons name="menu" size={35} color={Colors.primary} />
+                                    </TouchableOpacity>
                                 </View>
                             </View>
 
@@ -86,14 +93,14 @@ const UserProfile = () => {
                             case 'highlights':
                                 return <Highlights />;
                             case 'userPosts':
-                                return <UserPosts />;                          
+                                return <UserPosts />;
                             default:
                                 return null;
                         }
                     }}
                     keyExtractor={item => item.key}
                 />
-            </View>         
+            </View>
         </>
     )
 }

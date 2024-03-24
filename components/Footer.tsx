@@ -6,7 +6,7 @@ import { useNavigation } from '@react-navigation/native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../App';
 
-type FooterProps = NativeStackScreenProps<RootStackParamList, 'Home'>
+type FooterProps = NativeStackScreenProps<RootStackParamList, 'Settings'>
 
 const Footer = () => {
     const navigation = useNavigation<FooterProps['navigation']>();

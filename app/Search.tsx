@@ -5,6 +5,7 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import Colors from '../constants/Colors';
 import { fetchPopularVideos } from '../api/videos';
 import Store from '../components/common/store';
+import SearhBar from '../components/common/SearhBar';
 
 const Search = () => {
     const [page, setPage] = useState(6);
@@ -59,10 +60,7 @@ const Search = () => {
 
     return (
         <View style={tw`flex-1`}>
-            <View style={[{ backgroundColor: Colors.dimgrey }, tw`flex flex-row p-2 px-3 rounded-xl gap-4 items-center`]}>
-                <Ionicons name="search-outline" size={22} color={Colors.primary} />
-                <Text style={[{ color: Colors.medium }, tw`text-base`]}>Search</Text>
-            </View>
+           <SearhBar/>
 
             <FlatList
                 data={imageData}

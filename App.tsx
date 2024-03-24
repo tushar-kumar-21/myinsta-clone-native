@@ -2,7 +2,7 @@ import { Platform, SafeAreaView, StyleSheet, Text, View, StatusBar } from 'react
 import tw from 'twrnc';
 import Home from './app/HomePage/Home';
 import Search from './app/Search';
-import Header from './components/Header';
+import SettingsPrivacy from './app/settings/SettingsPrivacy';
 import UserProfile from './app/userSection/UserProfile';
 import Colors from './constants/Colors';
 import Footer from './components/Footer';
@@ -17,6 +17,7 @@ export type RootStackParamList = {
   Search?: undefined;
   UserProfile?: undefined;
   Reels?: undefined;
+  Settings?:undefined;
 }
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -58,6 +59,14 @@ export default function App() {
                 <Stack.Screen
                   name="Reels"
                   component={Reels}
+                  options={{
+                    headerShown: false,
+                    contentStyle: styles.container,
+                  }}
+                />
+                <Stack.Screen
+                  name="Settings"
+                  component={SettingsPrivacy}
                   options={{
                     headerShown: false,
                     contentStyle: styles.container,
