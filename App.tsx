@@ -29,7 +29,7 @@ export default function App() {
         <StatusBar backgroundColor={Colors.secondary} barStyle='light-content' />
         <SafeAreaView style={styles.androidSafeArea}>
           {/* <Home /> */}
-          <View style={tw`h-full w-full mt-3`}>
+          <View style={tw`h-full w-full mt-3 pb-16`}>
             <NavigationContainer>
               <Stack.Navigator>
                 <Stack.Screen
