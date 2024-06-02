@@ -5,13 +5,16 @@ import Colors from '../../constants/Colors';
 import tw from 'twrnc';
 import { ListItem } from '../interfaces/Interface';
 import SearhBar from '../../components/common/SearhBar';
+import { NativeStackScreenProps } from 'react-native-screens/lib/typescript/native-stack/types';
+import { RootStackParamList } from '../../App';
+import { useNavigation } from '@react-navigation/native';
 const metaLogo = require('../../assets/meta.png');
 
-const Section = ({ title, data }) => (
+const Section = ({ title, data }: { title: string, data: ListItem[] }) => (
   <View style={tw`px-4`}>
     <Text style={[{ color: Colors.medium }, tw`py-4`]}>{title}</Text>
     <View style={tw`flex flex-col gap-5`}>
-      {data.map((item: ListItem, index:number) => (
+      {data.map((item, index) => (
         <View key={index} style={tw`flex-row justify-between items-center`}>
           <View style={tw`flex-row gap-3 items-center`}>
             <item.iconLibrary name={item.iconName} size={22} color={Colors.primary} />
@@ -103,6 +106,10 @@ const SettingsPrivacy = () => {
     },
   ];
 
+  type SettingProps = NativeStackScreenProps<RootStackParamList, 'Settings'>
+
+  const navigation = useNavigation<SettingProps['navigation']>();
+
   return (
     <SafeAreaView style={[{ color: Colors.primary }, tw``]}>
       <ScrollView>
@@ -116,16 +123,18 @@ const SettingsPrivacy = () => {
             <Text style={[{ color: Colors.medium }, tw`text-sm font-semibold`]}>Your account</Text>
             <Text style={[{ color: Colors.primary }, tw`text-lg font-semibold`]}>Meta</Text>
           </View>
-          <View style={tw`py-4 flex-row justify-between items-center`}>
-            <View style={tw`flex-row justify-between items-center gap-4`}>
-              <Icons.FontAwesome name="user-circle" size={24} color={Colors.primary} />
-              <View>
-                <Text style={[{ color: Colors.primary }, tw`text-base text-white`]}>Accounts Centre</Text>
-                <Text style={[{ color: Colors.medium }, tw``]}>Password, security, personal details, ads</Text>
+          <TouchableOpacity onPress={() => navigation.navigate('AccountsCentre')}>
+            <View style={tw`py-4 flex-row justify-between items-center `} >
+              <View style={tw`flex-row justify-between items-center gap-4`}>
+                <Icons.FontAwesome name="user-circle" size={24} color={Colors.primary} />
+                <View>
+                  <Text style={[{ color: Colors.primary }, tw`text-base text-white`]}>Accounts Centre</Text>
+                  <Text style={[{ color: Colors.medium }, tw``]}>Password, security, personal details, ads</Text>
+                </View>
               </View>
+              <Icons.FontAwesome name="angle-right" size={24} color={Colors.primary} />
             </View>
-            <Icons.FontAwesome name="angle-right" size={24} color={Colors.primary} />
-          </View>
+          </TouchableOpacity>
           <Text style={[{ color: Colors.medium }, tw`text-xs`]}>
             Manage your connected experiences and account settings across Meta technologies.
             <Text style={[{ color: Colors.textPrimary }, tw``]} onPress={() => Linking.openURL("https://youtube.com")}>Learn more</Text>

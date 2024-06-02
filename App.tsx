@@ -11,6 +11,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
 import Reels from './app/reels/Reels';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import SettingsStackNavigator from './app/settings/SettingsStackNavigator';
 
 export type RootStackParamList = {
   Home?: undefined;
@@ -18,6 +19,7 @@ export type RootStackParamList = {
   UserProfile?: undefined;
   Reels?: undefined;
   Settings?:undefined;
+  AccountsCentre?:undefined;
 }
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -66,12 +68,20 @@ export default function App() {
                 />
                 <Stack.Screen
                   name="Settings"
-                  component={SettingsPrivacy}
+                  component={SettingsStackNavigator}
                   options={{
                     headerShown: false,
                     contentStyle: styles.container,
                   }}
                 />
+                {/* <Stack.Screen
+                  name="Accounts_centre"
+                  component={SettingsPrivacy}
+                  options={{
+                    headerShown: false,
+                    contentStyle: styles.container,
+                  }}
+                /> */}
               </Stack.Navigator>
               <Footer />
             </NavigationContainer>
